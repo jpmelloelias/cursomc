@@ -48,6 +48,7 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
 	@Autowired
 	private EnderecoRepository enderecoRepository;		
 	
