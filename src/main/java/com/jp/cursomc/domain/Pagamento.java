@@ -10,13 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.jp.cursomc.domain.enums.EstadoPagamento;
 
 
 @Entity 
 @Inheritance(strategy=InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Pagamento  implements Serializable{
 
 	
@@ -55,8 +56,8 @@ public abstract class Pagamento  implements Serializable{
 		return estado;
 	}
 
-	public void setEstado(Integer estado) {
-		this.estado = estado;
+	public void setEstado(EstadoPagamento estado) {
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {
